@@ -1,8 +1,8 @@
-public class Nodo {
+public class nodo {
     int valor;
-    Nodo siguiente;
+    nodo siguiente;
 
-    public Nodo(int valor) {
+    public nodo(int valor) {
         this.valor = valor;
         this.siguiente = null;
     }

@@ -1,14 +1,14 @@
-public class Cola {
-    private Nodo frente;
-    private Nodo fin;
+public class cola {
+    private nodo frente;
+    private nodo fin;
 
-    public Cola() {
+    public cola() {
         frente = null;
         fin = null;
     }
 
     public void insertar(int valor) {
-        Nodo nuevo = new Nodo(valor);
+        nodo nuevo = new nodo(valor);
         if (fin == null) {
             frente = nuevo;
             fin = nuevo;
@@ -53,7 +53,7 @@ public class Cola {
             return;
         }
 
-        Nodo actual = frente;
+        nodo actual = frente;
         int indice = 0;
 
         while (actual != null && indice < posicion) {
