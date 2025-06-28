@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
-        cola cola = new cola();
+        Cola cola = new Cola();
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
@@ -11,7 +11,10 @@ public class main {
             System.out.println("1. Insertar elemento");
             System.out.println("2. Extraer elemento");
             System.out.println("3. Obtener primer elemento");
-            System.out.println("4. Salir");
+            System.out.println("4. Obtener último elemento");
+            System.out.println("5. Obtener elemento en posición");
+            System.out.println("6. ¿Está vacía la cola?");
+            System.out.println("7. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
 
@@ -28,11 +31,23 @@ public class main {
                     cola.obtenerPrimero();
                     break;
                 case 4:
+                    cola.obtenerUltimo();
+                    break;
+                case 5:
+                    System.out.print("Ingrese la posición: ");
+                    int pos = scanner.nextInt();
+                    scanner.nextLine(); 
+                    cola.obtenerElementoEnPosicion(pos);
+                    break;
+                case 6:
+                    cola.verificarSiEstaVacia();
+                    break;      
+                case 7:
                     System.out.println("Programa finalizado.");
                     break;
                 default:
                     System.out.println("Opción inválida.");
             }
-        } while (opcion != 4);
+        } while (opcion != 7);
     }
 }

@@ -1,14 +1,14 @@
-public class cola {
-    private nodo frente;
-    private nodo fin;
+public class Cola {
+    private Nodo frente;
+    private Nodo fin;
 
-    public cola() {
+    public Cola() {
         frente = null;
         fin = null;
     }
 
     public void insertar(int valor) {
-        nodo nuevo = new nodo(valor);
+        Nodo nuevo = new Nodo(valor);
         if (fin == null) {
             frente = nuevo;
             fin = nuevo;
@@ -39,8 +39,40 @@ public class cola {
         }
     }
 
-    public boolean estaVacia() {
-        return frente == null;
+    public void obtenerUltimo() {
+        if (fin == null) {
+            System.out.println("La cola está vacía.");
+        } else {
+            System.out.println("Último elemento: " + fin.valor);
+        }
+    }
+
+    public void obtenerElementoEnPosicion(int posicion) {
+        if (posicion < 0) {
+            System.out.println("Posición inválida.");
+            return;
+        }
+
+        Nodo actual = frente;
+        int indice = 0;
+
+        while (actual != null && indice < posicion) {
+            actual = actual.siguiente;
+            indice++;
+        }
+
+        if (actual == null) {
+            System.out.println("No existe un elemento en esa posición.");
+        } else {
+            System.out.println("Elemento en posición " + posicion + ": " + actual.valor);
+        }
+    }
+
+    public void verificarSiEstaVacia() {
+        if (frente == null) {
+            System.out.println("SI");
+        } else {
+            System.out.println("NO");
+        }
     }
 }
-
