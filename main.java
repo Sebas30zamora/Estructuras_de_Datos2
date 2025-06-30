@@ -14,7 +14,10 @@ public class main {
             System.out.println("4. Obtener último elemento");
             System.out.println("5. Obtener elemento en posición");
             System.out.println("6. ¿Está vacía la cola?");
-            System.out.println("7. Salir");
+            System.out.println("7. Mostrar cantidad de elementos");
+            System.out.println("8. Mostrar elementos en la cola");
+            System.out.println("9. Vaciar la cola");
+            System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
 
@@ -41,13 +44,22 @@ public class main {
                     break;
                 case 6:
                     cola.verificarSiEstaVacia();
-                    break;      
+                    break;
                 case 7:
+                    cola.obtenerCantidad();
+                    break;
+                case 8:
+                    cola.mostrarElementos();
+                    break;
+                case 9:
+                    cola.vaciar();
+                    break;
+                case 0:
                     System.out.println("Programa finalizado.");
                     break;
                 default:
                     System.out.println("Opción inválida.");
             }
-        } while (opcion != 7);
+        } while (opcion != 0);
     }
 }
