@@ -13,7 +13,8 @@ public class TenistasATP {
             System.out.println("2. Mostrar datos ingresados");
             System.out.println("3. Mostrar tenistas ordenados por puntaje descendente");
             System.out.println("4. Mostrar tenistas ordenados por edad ascendente");
-            System.out.println("0. Salir");
+            System.out.println("5. Mostrar tenistas ordenados por país y nombre ascendente");
+            System.out.println("6. Terminar");
             System.out.print("Seleccione una opción: ");
             opcion = Integer.parseInt(sc.nextLine());
 
@@ -59,7 +60,26 @@ public class TenistasATP {
                     }
                     break;
 
-                case 0:
+                case 5:
+                    System.out.println("\n--- Tenistas ordenados por país y nombre (ascendente) ---");
+                    List<Tenista> ordenadosPorPaisNombre = new ArrayList<>(tenistas);
+                    Collections.sort(ordenadosPorPaisNombre, new Comparator<Tenista>() {
+                        @Override
+                        public int compare(Tenista t1, Tenista t2) {
+                            int cmpPais = t1.pais.compareToIgnoreCase(t2.pais);
+                            if (cmpPais != 0) {
+                                return cmpPais;
+                            } else {
+                                return t1.nombre.compareToIgnoreCase(t2.nombre);
+                            }
+                        }
+                    });
+                    for (Tenista t : ordenadosPorPaisNombre) {
+                        System.out.println(t);
+                    }
+                    break;
+
+                case 6:
                     System.out.println("Saliendo...");
                     break;
 
@@ -67,12 +87,12 @@ public class TenistasATP {
                     System.out.println("Opción inválida.");
             }
 
-        } while (opcion != 0);
+        } while (opcion != 6);
 
         sc.close();
     }
 
-    // Ordenamiento por puntaje descendente con QuickSort
+    
     public static void quickSortPuntajeDesc(List<Tenista> lista, int inicio, int fin) {
         if (inicio < fin) {
             int indiceParticion = particionarPuntaje(lista, inicio, fin);
@@ -86,7 +106,7 @@ public class TenistasATP {
         int i = inicio - 1;
 
         for (int j = inicio; j < fin; j++) {
-            if (lista.get(j).puntaje > pivote) { // Descendente
+            if (lista.get(j).puntaje > pivote) {
                 i++;
                 Collections.swap(lista, i, j);
             }
@@ -95,7 +115,7 @@ public class TenistasATP {
         return i + 1;
     }
 
-    // Ordenamiento por edad ascendente con Inserción
+    
     public static void insertionSortEdadAsc(List<Tenista> lista) {
         for (int i = 1; i < lista.size(); i++) {
             Tenista actual = lista.get(i);

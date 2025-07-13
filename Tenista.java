@@ -4,7 +4,6 @@ public class Tenista {
     int edad;
     double puntaje;
 
-    // Constructor
     public Tenista(String nombre, String pais, int edad, double puntaje) {
         this.nombre = nombre;
         this.pais = pais;
@@ -14,6 +13,6 @@ public class Tenista {
 
     @Override
     public String toString() {
-        return nombre + " " + pais + " " + edad + " " + puntaje;
+        return nombre + " | " + pais + " | " + edad + " | " + puntaje;
     }
 }
