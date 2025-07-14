@@ -26,10 +26,26 @@ public class TenistasATP {
                         String nombre = sc.nextLine();
                         System.out.println("Ingrese el país del tenista: ");
                         String pais = sc.nextLine();
-                        System.out.println("Ingrese la edad del tenista: ");
-                        int edad = Integer.parseInt(sc.nextLine());
-                        System.out.println("Ingrese el puntaje del tenista: ");
-                        double puntaje = Double.parseDouble(sc.nextLine());
+                        int edad;
+                        while (true) {
+                            try {
+                                System.out.println("Ingrese la edad del tenista: ");
+                                edad = Integer.parseInt(sc.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Esta entrada es inválida.");
+                            }
+                        }
+                        double puntaje;
+                        while (true) {
+                            try {
+                                System.out.println("Ingrese el puntaje del tenista: ");
+                                puntaje = Double.parseDouble(sc.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Esta entrada es inválida.");
+                            }
+                        }
 
                         tenistas.add(new Tenista(nombre, pais, edad, puntaje));
                     }
