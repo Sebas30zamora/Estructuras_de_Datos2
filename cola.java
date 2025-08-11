@@ -1,15 +1,18 @@
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
+// Clase que implementa una cola (FIFO) con nodos enlazados
 public class cola {
-    private nodo frente;
-    private nodo fin;
+    private nodo frente; // Primer nodo de la cola
+    private nodo fin;    // Último nodo de la cola
 
+    // Constructor: inicializa la cola vacía
     public cola() {
         frente = null;
         fin = null;
     }
 
+    // Inserta un elemento al final de la cola
     public void insertar(int valor) {
         nodo nuevo = new nodo(valor);
         if (fin == null) {
@@ -22,6 +25,7 @@ public class cola {
         System.out.println("Elemento insertado: " + valor);
     }
 
+    // Extrae el primer elemento de la cola
     public void extraer() {
         if (frente == null) {
             System.out.println("La cola está vacía.");
@@ -34,6 +38,7 @@ public class cola {
         }
     }
 
+    // Muestra el primer elemento sin eliminarlo
     public void obtenerPrimero() {
         if (frente == null) {
             System.out.println("La cola está vacía.");
@@ -42,6 +47,7 @@ public class cola {
         }
     }
 
+    // Muestra el último elemento sin eliminarlo
     public void obtenerUltimo() {
         if (fin == null) {
             System.out.println("La cola está vacía.");
@@ -50,20 +56,18 @@ public class cola {
         }
     }
 
+    // Muestra el elemento en una posición específica
     public void obtenerElementoEnPosicion(int posicion) {
         if (posicion < 0) {
             System.out.println("Posición inválida.");
             return;
         }
-
         nodo actual = frente;
         int indice = 0;
-
         while (actual != null && indice < posicion) {
             actual = actual.siguiente;
             indice++;
         }
-
         if (actual == null) {
             System.out.println("No existe un elemento en esa posición.");
         } else {
@@ -71,6 +75,7 @@ public class cola {
         }
     }
 
+    // Verifica si la cola está vacía
     public void verificarSiEstaVacia() {
         if (frente == null) {
             System.out.println("SI");
@@ -79,6 +84,7 @@ public class cola {
         }
     }
 
+    // Obtiene la cantidad de elementos en la cola
     public void obtenerCantidad() {
         int contador = 0;
         nodo actual = frente;
@@ -89,6 +95,7 @@ public class cola {
         System.out.println("Cantidad de elementos en la cola: " + contador);
     }
 
+    // Muestra gráficamente los elementos de la cola en una ventana
     public void mostrarElementos() {
         if (fin == null) {
             System.out.println("La cola está vacía.");
@@ -125,6 +132,7 @@ public class cola {
         }
     }
 
+    // Vacía todos los elementos de la cola
     public void vaciar() {
         frente = null;
         fin = null;

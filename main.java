@@ -17,7 +17,7 @@ public class main {
             System.out.println("7. Mostrar cantidad de elementos");
             System.out.println("8. Mostrar elementos en la cola");
             System.out.println("9. Vaciar la cola");
-            System.out.println("0. Salir");
+            System.out.println("10. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
 
@@ -54,7 +54,7 @@ public class main {
                 case 9:
                     cola.vaciar();
                     break;
-                case 0:
+                case 10:
                     System.out.println("Programa finalizado.");
                     break;
                 default:
