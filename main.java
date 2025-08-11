@@ -18,15 +18,14 @@ public class main {
             System.out.println("8. Mostrar elementos en la cola");
             System.out.println("9. Vaciar la cola");
             System.out.println("10. Salir");
-            System.out.print("Seleccione una opción: ");
-            opcion = scanner.nextInt();
+            opcion = leerEntero(scanner, "Seleccione una opción: ");
 
             switch (opcion) {
-                case 1:
-                    System.out.print("Ingrese un número entero: ");
-                    int valor = scanner.nextInt();
+                case 1: {
+                    int valor = leerEntero(scanner, "Ingrese un número entero: ");
                     cola.insertar(valor);
                     break;
+                }
                 case 2:
                     cola.extraer();
                     break;
@@ -36,12 +35,11 @@ public class main {
                 case 4:
                     cola.obtenerUltimo();
                     break;
-                case 5:
-                    System.out.print("Ingrese la posición: ");
-                    int pos = scanner.nextInt();
-                    scanner.nextLine(); 
+                case 5: {
+                    int pos = leerEntero(scanner, "Ingrese la posición (0, 1, 2, ...): ");
                     cola.obtenerElementoEnPosicion(pos);
                     break;
+                }
                 case 6:
                     cola.verificarSiEstaVacia();
                     break;
@@ -60,6 +58,26 @@ public class main {
                 default:
                     System.out.println("Opción inválida.");
             }
-        } while (opcion != 0);
+        } while (opcion != 10);
+
+        scanner.close();
+    }
+
+    /**
+     * Lee un entero desde consola. Si el usuario escribe letras u otro formato,
+     * muestra "Las letras no son válidas" y vuelve a pedir.
+     */
+    private static int leerEntero(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            if (scanner.hasNextInt()) {
+                int val = scanner.nextInt();
+                scanner.nextLine(); // consumir el fin de línea
+                return val;
+            } else {
+                String invalido = scanner.next(); // consume el token inválido
+                System.out.println("Entrada inválida: \"" + invalido + "\". Las letras no son válidas, solo números enteros.");
+            }
+        }
     }
 }
