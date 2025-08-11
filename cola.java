@@ -97,40 +97,45 @@ public class cola {
 
     // Muestra gráficamente los elementos de la cola en una ventana
     public void mostrarElementos() {
-        if (fin == null) {
-            System.out.println("La cola está vacía.");
-        } else {
-            System.out.println("Los elementos van a aparecer en una nueva ventana.");
-            JFrame frame = new JFrame("Elementos de la cola");
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setSize(800, 200);
-            frame.setLocationRelativeTo(null);
-            JPanel panel = new JPanel() {
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    nodo actual = frente;
-                    int x = 20;
-                    while (actual != null) {
-                        g.drawRect(x, 50, 50, 50);
-                        g.drawString(Integer.toString(actual.valor), x + 20, 80);
-                        if (actual.siguiente != null) {
-                            g.drawLine(x + 50, 75, x + 70, 75);
-                            g.drawLine(x + 65, 70, x + 70, 75);
-                            g.drawLine(x + 65, 80, x + 70, 75);
-                        }
-                        x += 70;
-                        actual = actual.siguiente;
+    if (fin == null) {
+        System.out.println("La cola está vacía.");
+    } else {
+        System.out.println("Los elementos van a aparecer en una nueva ventana.");
+
+        nodo inicio = frente;
+
+        JFrame frame = new JFrame("Elementos de la cola");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(800, 200);
+        frame.setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel() {
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                nodo actual = inicio; 
+                int x = 20;
+                while (actual != null) {
+                    g.drawRect(x, 50, 50, 50);
+                    g.drawString(Integer.toString(actual.valor), x + 20, 80);
+                    if (actual.siguiente != null) {
+                        g.drawLine(x + 50, 75, x + 70, 75);
+                        g.drawLine(x + 65, 70, x + 70, 75);
+                        g.drawLine(x + 65, 80, x + 70, 75);
                     }
-                    if (frente != null) {
-                        g.drawString("raiz", 25, 40);
-                        g.drawLine(35, 45, 35, 50);
-                    }
+                    x += 70;
+                    actual = actual.siguiente;
                 }
-            };
-            frame.add(panel);
-            frame.setVisible(true);
-        }
+                if (inicio != null) {
+                    g.drawString("raiz", 25, 40);
+                    g.drawLine(35, 45, 35, 50);
+                }
+            }
+        };
+
+        frame.add(panel);
+        frame.setVisible(true);
     }
+}
 
     // Vacía todos los elementos de la cola
     public void vaciar() {
